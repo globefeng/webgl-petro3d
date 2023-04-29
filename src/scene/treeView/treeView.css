@@ -1,0 +1,72 @@
+.treeDiv {
+    overflow: hidden;
+    background: white;
+}
+
+.treeRow {
+    display: flex;
+    flex-flow: nowrap;
+    overflow: hidden;
+    height: 22px;
+    width: 100%;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 4px;
+    padding-right: 10px;
+}
+
+.checkBox {
+    width: 16px;
+    height: 16px;
+    border: '1px solid gray';
+    display: inline-block;
+}
+
+.treeView {
+    width: 100%;
+    background-color: white;
+    padding: 8px;
+    font-size: 10px;
+}
+
+.treeArrow {
+    display: inline-block;
+    width: 20px;
+    height: 14px;
+    margin-right: 6px;
+}
+
+.treeIcon {
+    width: 12px;
+    height: 12px;
+}
+
+.treeCheckDiv {
+    width: 20px;
+    height: 16px;
+    padding: 0px 4px 4px 4px;
+    display: inline-block;
+    border: 1px solid #bbb;
+}
+ 
+.treeIconDiv {
+   padding: 2px 4px 2px 4px;
+   display: inline-block;
+   border: 1px solid #bbb;
+   margin-right: 6px;
+}
+
+.treeContent {
+    display: flex;
+    width:100%;
+    overflow: hidden;
+    flex-flow: nowrap;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 4px;
+}
+
+.treeRow:hover {
+    background-color: lightblue;
+}
