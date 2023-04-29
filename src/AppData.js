@@ -1,55 +1,55 @@
 /* eslint-disable no-loss-of-precision */
 export const SceneData =
 {
-  DD_GridSizeMeter_EE: 1000,
-  DD_LTPOrig_EE: {
+  GridSizeMeter: 1000,
+  LTPOrig: {
     X: -95.68255615234375,
     Y: 29.728639602661133,
     Z: 0
   },
-  DD_BoundMinMeter_EE: {
+  BoundMinMeter: {
     X: -4000,
     Y: -3000,
     Z: -3000
   },
-  DD_BoundMaxMeter_EE: {
+  BoundMaxMeter: {
     X: 2000,
     Y: 1000,
     Z: 4000
   },
-  DD_GridSizeFoot_EE: 1000,
-  DD_BoundMinFoot_EE: {
+  GridSizeFoot: 1000,
+  BoundMinFoot: {
     X: -12000,
     Y: -9000,
     Z: -8000
   },
-  DD_BoundMaxFoot_EE: {
+  BoundMaxFoot: {
     X: 7000,
     Y: 1000,
     Z: 11000
   },
-  DD_MinPoint_EE: {
+  MinPoint: {
     X: -4000,
     Y: -3000,
     Z: -3000
   },
-  DD_MaxPoint_EE: {
+  MaxPoint: {
     X: 2000,
     Y: 1000,
     Z: 4000
   },
-  DD_WellGroup_EE: {
-    DD_Wellbores_EE: [
+  WellGroup: {
+    Wellbores: [
       {
-        DD_PerfGroup_EE: {
-          DD_PerfCollection_EE: [
+        PerfGroup: {
+          PerfCollection: [
             {
-              DD_Color_EE: {
+              Color: {
                 X: 1,
                 Y: 0,
                 Z: 0
               },
-              DD_Distances_EE: [
+              Distances: [
                 4500,
                 4503,
                 4475,
@@ -61,16 +61,16 @@ export const SceneData =
                 4400,
                 4403
               ],
-              DD_ID_EE: '1005',
-              DD_Name_EE: 'Stage 1'
+              ID: '1005',
+              Name: 'Stage 1'
             },
             {
-              DD_Color_EE: {
+              Color: {
                 X: 0.501960813999176,
                 Y: 0,
                 Z: 0.501960813999176
               },
-              DD_Distances_EE: [
+              Distances: [
                 4300,
                 4303,
                 4275,
@@ -82,16 +82,16 @@ export const SceneData =
                 4200,
                 4203
               ],
-              DD_ID_EE: '1006',
-              DD_Name_EE: 'Stage 2'
+              ID: '1006',
+              Name: 'Stage 2'
             },
             {
-              DD_Color_EE: {
+              Color: {
                 X: 0,
                 Y: 0.501960813999176,
                 Z: 0
               },
-              DD_Distances_EE: [
+              Distances: [
                 4100,
                 4103,
                 4075,
@@ -103,16 +103,16 @@ export const SceneData =
                 4000,
                 4003
               ],
-              DD_ID_EE: '1007',
-              DD_Name_EE: 'Stage 3'
+              ID: '1007',
+              Name: 'Stage 3'
             },
             {
-              DD_Color_EE: {
+              Color: {
                 X: 1,
                 Y: 0.38823530077934265,
                 Z: 0.27843138575553894
               },
-              DD_Distances_EE: [
+              Distances: [
                 3900,
                 3903,
                 3875,
@@ -124,16 +124,16 @@ export const SceneData =
                 3800,
                 3803
               ],
-              DD_ID_EE: '1008',
-              DD_Name_EE: 'Stage 4'
+              ID: '1008',
+              Name: 'Stage 4'
             },
             {
-              DD_Color_EE: {
+              Color: {
                 X: 0.250980406999588,
                 Y: 0.8784313797950745,
                 Z: 0.8156862854957581
               },
-              DD_Distances_EE: [
+              Distances: [
                 3700,
                 3703,
                 3675,
@@ -145,16 +145,16 @@ export const SceneData =
                 3600,
                 3603
               ],
-              DD_ID_EE: '1009',
-              DD_Name_EE: 'Stage 5'
+              ID: '1009',
+              Name: 'Stage 5'
             },
             {
-              DD_Color_EE: {
+              Color: {
                 X: 0.9333333373069763,
                 Y: 0.5098039507865906,
                 Z: 0.9333333373069763
               },
-              DD_Distances_EE: [
+              Distances: [
                 3500,
                 3503,
                 3475,
@@ -166,16 +166,16 @@ export const SceneData =
                 3400,
                 3403
               ],
-              DD_ID_EE: '1010',
-              DD_Name_EE: 'Stage 6'
+              ID: '1010',
+              Name: 'Stage 6'
             },
             {
-              DD_Color_EE: {
+              Color: {
                 X: 1,
                 Y: 1,
                 Z: 0
               },
-              DD_Distances_EE: [
+              Distances: [
                 3300,
                 3303,
                 3275,
@@ -187,16 +187,16 @@ export const SceneData =
                 3200,
                 3203
               ],
-              DD_ID_EE: '1011',
-              DD_Name_EE: 'Stage 7'
+              ID: '1011',
+              Name: 'Stage 7'
             },
             {
-              DD_Color_EE: {
+              Color: {
                 X: 0.545098066329956,
                 Y: 0.2705882489681244,
                 Z: 0.07450980693101883
               },
-              DD_Distances_EE: [
+              Distances: [
                 3100,
                 3103,
                 3075,
@@ -208,21 +208,21 @@ export const SceneData =
                 3000,
                 3003
               ],
-              DD_ID_EE: '1012',
-              DD_Name_EE: 'Stage 8'
+              ID: '1012',
+              Name: 'Stage 8'
             }
           ],
-          DD_ID_EE: '1004',
-          DD_Name_EE: 'Perf'
+          ID: '1004',
+          Name: 'Perf'
         },
-        DD_GeophoneGroup_EE: null,
-        DD_Color_EE: {
+        GeophoneGroup: null,
+        Color: {
           X: 1,
           Y: 0.38823530077934265,
           Z: 0.27843138575553894
         },
-        DD_MaxDistance_EE: 4703.942,
-        DD_JointPoints_EE: [
+        MaxDistance: 4703.942,
+        JointPoints: [
           {
             X: -4.508393658397836e-12,
             Y: 0,
@@ -1049,12 +1049,12 @@ export const SceneData =
             Z: -370.8276062011719
           }
         ],
-        DD_LasLog_EE: {
-          DD_NameList_EE: [
+        LasLog: {
+          NameList: [
             'GR',
             'S'
           ],
-          DD_DepthList_EE: [
+          DepthList: [
             45.72,
             45.8724,
             46.0248,
@@ -14337,10 +14337,10 @@ export const SceneData =
             2069.4397,
             2069.592
           ],
-          DD_CurveDataList_EE: [
+          CurveDataList: [
             {
-              DD_Name_EE: 'GR',
-              DD_DataList_EE: [
+              Name: 'GR',
+              DataList: [
                 0,
                 0,
                 7.03,
@@ -27623,13 +27623,13 @@ export const SceneData =
                 4.87,
                 5
               ],
-              DD_MaxValue_EE: 15.693821,
-              DD_MaxDepthIndex_EE: 13281,
-              DD_Unit_EE: 'NONE'
+              MaxValue: 15.693821,
+              MaxDepthIndex: 13281,
+              Unit: 'NONE'
             },
             {
-              DD_Name_EE: 'S',
-              DD_DataList_EE: [
+              Name: 'S',
+              DataList: [
                 0,
                 0,
                 0,
@@ -40912,95 +40912,95 @@ export const SceneData =
                 0,
                 0
               ],
-              DD_MaxValue_EE: 93.65272,
-              DD_MaxDepthIndex_EE: 13281,
-              DD_Unit_EE: 'us/f'
+              MaxValue: 93.65272,
+              MaxDepthIndex: 13281,
+              Unit: 'us/f'
             }
           ],
-          DD_ID_EE: '1077',
-          DD_Name_EE: 'Las'
+          ID: '1077',
+          Name: 'Las'
         },
-        DD_ID_EE: '1002',
-        DD_Name_EE: 'aaa'
+        ID: '1002',
+        Name: 'aaa'
       },
       {
-        DD_PerfGroup_EE: null,
-        DD_GeophoneGroup_EE: {
-          DD_GeophoneCollection_EE: [
+        PerfGroup: null,
+        GeophoneGroup: {
+          GeophoneCollection: [
             {
-              DD_Distances_EE: [
+              Distances: [
                 1300
               ],
-              DD_ID_EE: '1015',
-              DD_Name_EE: ' Stage 1, Stage 2, Stage 3, Stage 4, Stage 5, Stage 6, Stage 7, Stage 8'
+              ID: '1015',
+              Name: ' Stage 1, Stage 2, Stage 3, Stage 4, Stage 5, Stage 6, Stage 7, Stage 8'
             },
             {
-              DD_Distances_EE: [
+              Distances: [
                 1350
               ],
-              DD_ID_EE: '1016',
-              DD_Name_EE: ' Stage 1, Stage 2, Stage 3, Stage 4, Stage 5, Stage 6, Stage 7, Stage 8'
+              ID: '1016',
+              Name: ' Stage 1, Stage 2, Stage 3, Stage 4, Stage 5, Stage 6, Stage 7, Stage 8'
             },
             {
-              DD_Distances_EE: [
+              Distances: [
                 1400
               ],
-              DD_ID_EE: '1017',
-              DD_Name_EE: ' Stage 1, Stage 2, Stage 3, Stage 4, Stage 5, Stage 6, Stage 7, Stage 8'
+              ID: '1017',
+              Name: ' Stage 1, Stage 2, Stage 3, Stage 4, Stage 5, Stage 6, Stage 7, Stage 8'
             },
             {
-              DD_Distances_EE: [
+              Distances: [
                 1450
               ],
-              DD_ID_EE: '1018',
-              DD_Name_EE: ' Stage 1, Stage 2, Stage 3, Stage 4, Stage 5, Stage 6, Stage 7, Stage 8'
+              ID: '1018',
+              Name: ' Stage 1, Stage 2, Stage 3, Stage 4, Stage 5, Stage 6, Stage 7, Stage 8'
             },
             {
-              DD_Distances_EE: [
+              Distances: [
                 1500
               ],
-              DD_ID_EE: '1019',
-              DD_Name_EE: ' Stage 1, Stage 2, Stage 3, Stage 4, Stage 5, Stage 6, Stage 7, Stage 8'
+              ID: '1019',
+              Name: ' Stage 1, Stage 2, Stage 3, Stage 4, Stage 5, Stage 6, Stage 7, Stage 8'
             },
             {
-              DD_Distances_EE: [
+              Distances: [
                 1550
               ],
-              DD_ID_EE: '1020',
-              DD_Name_EE: ' Stage 1, Stage 2, Stage 3, Stage 4, Stage 5, Stage 6, Stage 7, Stage 8'
+              ID: '1020',
+              Name: ' Stage 1, Stage 2, Stage 3, Stage 4, Stage 5, Stage 6, Stage 7, Stage 8'
             },
             {
-              DD_Distances_EE: [
+              Distances: [
                 1600
               ],
-              DD_ID_EE: '1021',
-              DD_Name_EE: ' Stage 1, Stage 2, Stage 3, Stage 4, Stage 5, Stage 6, Stage 7, Stage 8'
+              ID: '1021',
+              Name: ' Stage 1, Stage 2, Stage 3, Stage 4, Stage 5, Stage 6, Stage 7, Stage 8'
             },
             {
-              DD_Distances_EE: [
+              Distances: [
                 1650
               ],
-              DD_ID_EE: '1022',
-              DD_Name_EE: ' Stage 1, Stage 2, Stage 3, Stage 4, Stage 5, Stage 6, Stage 7, Stage 8'
+              ID: '1022',
+              Name: ' Stage 1, Stage 2, Stage 3, Stage 4, Stage 5, Stage 6, Stage 7, Stage 8'
             },
             {
-              DD_Distances_EE: [
+              Distances: [
                 1700
               ],
-              DD_ID_EE: '1023',
-              DD_Name_EE: ' Stage 1, Stage 2, Stage 3, Stage 4, Stage 5, Stage 6, Stage 7, Stage 8'
+              ID: '1023',
+              Name: ' Stage 1, Stage 2, Stage 3, Stage 4, Stage 5, Stage 6, Stage 7, Stage 8'
             }
           ],
-          DD_ID_EE: '1080',
-          DD_Name_EE: 'Geophone'
+          ID: '1080',
+          Name: 'Geophone'
         },
-        DD_Color_EE: {
+        Color: {
           X: 1,
           Y: 0.38823530077934265,
           Z: 0.27843138575553894
         },
-        DD_MaxDistance_EE: 3110.4604,
-        DD_JointPoints_EE: [
+        MaxDistance: 3110.4604,
+        JointPoints: [
           {
             X: -580.8570556640625,
             Y: -30.479049682617188,
@@ -41757,27 +41757,27 @@ export const SceneData =
             Z: 655.4052124023438
           }
         ],
-        DD_LasLog_EE: null,
-        DD_ID_EE: '1003',
-        DD_Name_EE: 'bbb'
+        LasLog: null,
+        ID: '1003',
+        Name: 'bbb'
       }
     ],
-    DD_ID_EE: '1001',
-    DD_Name_EE: 'Well Group'
+    ID: '1001',
+    Name: 'Well Group'
   },
-  DD_EventGroup_EE: {
-    DD_EventWellCollection_EE: [
+  EventGroup: {
+    EventWellCollection: [
       {
-        DD_StageCollection_EE: [
+        StageCollection: [
           {
             FirstEvent: 0,
             LastEvent: 1343836798,
-            DD_Color_EE: {
+            Color: {
               X: 1,
               Y: 0,
               Z: 0
             },
-            DD_EventCollection_EE: [
+            EventCollection: [
               {
                 X: -907.6558,
                 Y: -1511.641,
@@ -51779,18 +51779,18 @@ export const SceneData =
                 T: 1343823077
               }
             ],
-            DD_ID_EE: '1028',
-            DD_Name_EE: 'Stage 1'
+            ID: '1028',
+            Name: 'Stage 1'
           },
           {
             FirstEvent: 0,
             LastEvent: 1343923195,
-            DD_Color_EE: {
+            Color: {
               X: 0.501960813999176,
               Y: 0,
               Z: 0.501960813999176
             },
-            DD_EventCollection_EE: [
+            EventCollection: [
               {
                 X: -1486.2577,
                 Y: -1403.721,
@@ -61792,18 +61792,18 @@ export const SceneData =
                 T: 1343914623
               }
             ],
-            DD_ID_EE: '1029',
-            DD_Name_EE: 'Stage 2'
+            ID: '1029',
+            Name: 'Stage 2'
           },
           {
             FirstEvent: 0,
             LastEvent: 1344009590,
-            DD_Color_EE: {
+            Color: {
               X: 0,
               Y: 0.501960813999176,
               Z: 0
             },
-            DD_EventCollection_EE: [
+            EventCollection: [
               {
                 X: -2153.375,
                 Y: -1484.645,
@@ -71805,18 +71805,18 @@ export const SceneData =
                 T: 1343994122
               }
             ],
-            DD_ID_EE: '1030',
-            DD_Name_EE: 'Stage 3'
+            ID: '1030',
+            Name: 'Stage 3'
           },
           {
             FirstEvent: 0,
             LastEvent: 1344095965,
-            DD_Color_EE: {
+            Color: {
               X: 1,
               Y: 0.38823530077934265,
               Z: 0.27843138575553894
             },
-            DD_EventCollection_EE: [
+            EventCollection: [
               {
                 X: -521.74976,
                 Y: -1446.645,
@@ -81818,18 +81818,18 @@ export const SceneData =
                 T: 1344078124
               }
             ],
-            DD_ID_EE: '1031',
-            DD_Name_EE: 'Stage 4'
+            ID: '1031',
+            Name: 'Stage 4'
           },
           {
             FirstEvent: 0,
             LastEvent: 1344182398,
-            DD_Color_EE: {
+            Color: {
               X: 0.250980406999588,
               Y: 0.8784313797950745,
               Z: 0.8156862854957581
             },
-            DD_EventCollection_EE: [
+            EventCollection: [
               {
                 X: -258.29382,
                 Y: -1525.705,
@@ -91831,18 +91831,18 @@ export const SceneData =
                 T: 1344158862
               }
             ],
-            DD_ID_EE: '1032',
-            DD_Name_EE: 'Stage 5'
+            ID: '1032',
+            Name: 'Stage 5'
           },
           {
             FirstEvent: 0,
             LastEvent: 1344268793,
-            DD_Color_EE: {
+            Color: {
               X: 0.9333333373069763,
               Y: 0.5098039507865906,
               Z: 0.9333333373069763
             },
-            DD_EventCollection_EE: [
+            EventCollection: [
               {
                 X: -1367.5061,
                 Y: -1554.93,
@@ -101844,18 +101844,18 @@ export const SceneData =
                 T: 1344268717
               }
             ],
-            DD_ID_EE: '1033',
-            DD_Name_EE: 'Stage 6'
+            ID: '1033',
+            Name: 'Stage 6'
           },
           {
             FirstEvent: 0,
             LastEvent: 1344355156,
-            DD_Color_EE: {
+            Color: {
               X: 1,
               Y: 1,
               Z: 0
             },
-            DD_EventCollection_EE: [
+            EventCollection: [
               {
                 X: -245.75945,
                 Y: -1485.728,
@@ -111857,18 +111857,18 @@ export const SceneData =
                 T: 1344329413
               }
             ],
-            DD_ID_EE: '1034',
-            DD_Name_EE: 'Stage 7'
+            ID: '1034',
+            Name: 'Stage 7'
           },
           {
             FirstEvent: 0,
             LastEvent: 1344441592,
-            DD_Color_EE: {
+            Color: {
               X: 0.545098066329956,
               Y: 0.2705882489681244,
               Z: 0.07450980693101883
             },
-            DD_EventCollection_EE: [
+            EventCollection: [
               {
                 X: -656.83856,
                 Y: -1492.79,
@@ -121870,16 +121870,15 @@ export const SceneData =
                 T: 1344433744
               }
             ],
-            DD_ID_EE: '1035',
-            DD_Name_EE: 'Stage 8'
+            ID: '1035',
+            Name: 'Stage 8'
           }
         ],
-        DD_ID_EE: '1027',
-        DD_Name_EE: 'aaa'
+        ID: '1027',
+        Name: 'aaa'
       }
     ],
-    DD_ID_EE: '1026',
-    DD_Name_EE: 'Event Group'
-  },
-  DD_FormationGroup_EE: null
+    ID: '1026',
+    Name: 'Event Group'
+  }
 }

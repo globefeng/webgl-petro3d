@@ -54,7 +54,7 @@ class SceneComponent extends React.Component {
 
       dispatchAction({type:'SET_GEOLOCATION', data: this.scene.geoLocation});
       dispatchAction({type:'SET_TREEVIEW', data: this.scene.treeViewItems});
-      dispatchAction({type:'SET_EVENTDATA', data: this.sceneData.DD_EventGroup_EE});
+      dispatchAction({type:'SET_EVENTDATA', data: this.sceneData.EventGroup});
       
       this.initialized = true;      
     }
@@ -328,10 +328,10 @@ class SceneComponent extends React.Component {
             onWheel={this.handleMouseWheel} onMouseMove={this.handleMouseMove} onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp} >
               <div style={{margin:'4px'}}>
                 { this.sceneData !== null && this.sceneData !== undefined && this.state.unit === 'meter' &&
-                    <span>Grid size: {this.sceneData.DD_GridSizeMeter_EE} m</span>
+                    <span>Grid size: {this.sceneData.GridSizeMeter} m</span>
                 }
                 { this.sceneData !== null && this.sceneData !== undefined && this.state.unit !== 'meter' &&
-                    <span>Grid size: {this.sceneData.DD_GridSizeFoot_EE} ft</span>
+                    <span>Grid size: {this.sceneData.GridSizeFoot} ft</span>
                 }
               </div>
         </div>

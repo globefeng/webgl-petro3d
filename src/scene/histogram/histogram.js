@@ -261,16 +261,16 @@ const HistogramComponent = () => {
              formatTime(dt.getUTCHours()) + ':' + formatTime(dt.getUTCMinutes()) + ':' + formatTime(dt.getUTCSeconds());
     }
 
-    if (eventData && eventData.DD_EventWellCollection_EE !== null ) {
+    if (eventData && eventData.EventWellCollection !== null ) {
 
-      let stages = eventData.DD_EventWellCollection_EE[0].DD_StageCollection_EE;
+      let stages = eventData.EventWellCollection[0].StageCollection;
 
       let histogramList = [];
       let histogramTableList = [];
       let fractureList = [];
 
       for (var i = 0; i < stages.length; i++) {
-        let eventList = stages[i].DD_EventCollection_EE;
+        let eventList = stages[i].EventCollection;
         let minMax = findMinMax(eventList)
         let start = minMax[0];
         let end = start + 3600;
@@ -280,26 +280,26 @@ const HistogramComponent = () => {
         do {
           let eventCount = getEventCount(eventList, start, end);
           histogramList.push({
-            name: stages[i].DD_Name_EE, 
+            name: stages[i].Name, 
             min: start, 
             max: end, 
             count: eventCount,
-            colorR: Math.floor(stages[i].DD_Color_EE.X * 255),
-            colorG: Math.floor(stages[i].DD_Color_EE.Y * 255),
-            colorB: Math.floor(stages[i].DD_Color_EE.Z * 255)
+            colorR: Math.floor(stages[i].Color.X * 255),
+            colorG: Math.floor(stages[i].Color.Y * 255),
+            colorB: Math.floor(stages[i].Color.Z * 255)
           });
 
           let startTime = getTimeString(start);
           let endTime = getTimeString(end);
 
           histogramTableList.push({
-            name: stages[i].DD_Name_EE, 
+            name: stages[i].Name, 
             min: startTime, 
             max: endTime, 
             count: eventCount,
-            colorR: Math.floor(stages[i].DD_Color_EE.X * 255),
-            colorG: Math.floor(stages[i].DD_Color_EE.Y * 255),
-            colorB: Math.floor(stages[i].DD_Color_EE.Z * 255)
+            colorR: Math.floor(stages[i].Color.X * 255),
+            colorG: Math.floor(stages[i].Color.Y * 255),
+            colorB: Math.floor(stages[i].Color.Z * 255)
           });
 
           start = end;

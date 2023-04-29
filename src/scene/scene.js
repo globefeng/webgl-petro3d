@@ -40,21 +40,21 @@ export function Scene() {
         this.sceneInfo = new SceneInfo();
         this.sceneInfo.init(this.gl, shaderProgram, this.localTangentPlane);
 
-        this.geoLocation = sceneData.DD_LTPOrig_EE;
+        this.geoLocation = sceneData.LTPOrig;
 
         this.boundingBox = new BoundingBox(this.sceneInfo);
-        this.boundingBox.init(sceneData.DD_BoundMinMeter_EE.X, sceneData.DD_BoundMinMeter_EE.Y, sceneData.DD_BoundMinMeter_EE.Z,
-            sceneData.DD_BoundMaxMeter_EE.X, sceneData.DD_BoundMaxMeter_EE.Y, sceneData.DD_BoundMaxMeter_EE.Z,
-            sceneData.DD_GridSizeMeter_EE);
+        this.boundingBox.init(sceneData.BoundMinMeter.X, sceneData.BoundMinMeter.Y, sceneData.BoundMinMeter.Z,
+            sceneData.BoundMaxMeter.X, sceneData.BoundMaxMeter.Y, sceneData.BoundMaxMeter.Z,
+            sceneData.GridSizeMeter);
 
         this.boundingBoxFoot = new BoundingBox(this.sceneInfo);    
-        this.boundingBoxFoot.init(sceneData.DD_BoundMinFoot_EE.X / 3.2808399, 
-                                              sceneData.DD_BoundMinFoot_EE.Y / 3.2808399, 
-                                              sceneData.DD_BoundMinFoot_EE.Z / 3.2808399,
-                                              sceneData.DD_BoundMaxFoot_EE.X / 3.2808399, 
-                                              sceneData.DD_BoundMaxFoot_EE.Y / 3.2808399, 
-                                              sceneData.DD_BoundMaxFoot_EE.Z / 3.2808399,
-                                              sceneData.DD_GridSizeFoot_EE / 3.2808399);
+        this.boundingBoxFoot.init(sceneData.BoundMinFoot.X / 3.2808399, 
+                                              sceneData.BoundMinFoot.Y / 3.2808399, 
+                                              sceneData.BoundMinFoot.Z / 3.2808399,
+                                              sceneData.BoundMaxFoot.X / 3.2808399, 
+                                              sceneData.BoundMaxFoot.Y / 3.2808399, 
+                                              sceneData.BoundMaxFoot.Z / 3.2808399,
+                                              sceneData.GridSizeFoot / 3.2808399);
 
         var centerPosition = [(this.boundingBox.minX + this.boundingBox.maxX) / 2,
                                 this.boundingBox.minY,
@@ -92,63 +92,63 @@ export function Scene() {
         rootItem.hasChildren = true;
         this.treeViewItems.push(rootItem);
 
-        if (sceneData.DD_WellGroup_EE !== undefined && sceneData.DD_WellGroup_EE !== null && 
-            sceneData.DD_WellGroup_EE.DD_Wellbores_EE !== undefined && sceneData.DD_WellGroup_EE.DD_Wellbores_EE !== null) 
+        if (sceneData.WellGroup !== undefined && sceneData.WellGroup !== null && 
+            sceneData.WellGroup.Wellbores !== undefined && sceneData.WellGroup.Wellbores !== null) 
         {
-            let wellGroup = new RenderableGroup(sceneData.DD_WellGroup_EE.DD_Name_EE, sceneData.DD_WellGroup_EE.DD_ID_EE, this.sceneInfo);
+            let wellGroup = new RenderableGroup(sceneData.WellGroup.Name, sceneData.WellGroup.ID, this.sceneInfo);
             this.projectGroup.addChild(wellGroup);
 
             let wellGroupNode = new TreeViewItem();
-            wellGroupNode.id = sceneData.DD_WellGroup_EE.DD_ID_EE;
-            wellGroupNode.name = sceneData.DD_WellGroup_EE.DD_Name_EE;
+            wellGroupNode.id = sceneData.WellGroup.ID;
+            wellGroupNode.name = sceneData.WellGroup.Name;
             wellGroupNode.treeType = 1;
             wellGroupNode.depth = 1;        
             wellGroupNode.hasChildren = true;
             this.treeViewItems.push(wellGroupNode);
     
-            for (var i = 0; i < sceneData.DD_WellGroup_EE.DD_Wellbores_EE.length; i++) {
+            for (var i = 0; i < sceneData.WellGroup.Wellbores.length; i++) {
                 let wellbore = new Wellbore(this.sceneInfo);
-                let wellboreData = sceneData.DD_WellGroup_EE.DD_Wellbores_EE[i];
+                let wellboreData = sceneData.WellGroup.Wellbores[i];
 
                 let wellboreNode = new TreeViewItem();
-                wellboreNode.id = wellboreData.DD_ID_EE;
-                wellboreNode.name = wellboreData.DD_Name_EE;
+                wellboreNode.id = wellboreData.ID;
+                wellboreNode.name = wellboreData.Name;
                 wellboreNode.treeType = 2;    
                 wellboreNode.depth = 2;        
                 wellboreNode.hasChildren = true;
                 this.treeViewItems.push(wellboreNode);
 
                 let wellData = [];
-                for (var j = 0; j < wellboreData.DD_JointPoints_EE.length; j++) {
-                    var p = wellboreData.DD_JointPoints_EE[j];
+                for (var j = 0; j < wellboreData.JointPoints.length; j++) {
+                    var p = wellboreData.JointPoints[j];
                     wellData.push([p.X, p.Y, p.Z]);
                 }
         
-                wellbore.init(wellboreData.DD_Name_EE, wellboreData.DD_ID_EE, 10, wellData, 
-                    [wellboreData.DD_Color_EE.X, wellboreData.DD_Color_EE.Y, wellboreData.DD_Color_EE.Z]);
+                wellbore.init(wellboreData.Name, wellboreData.ID, 10, wellData, 
+                    [wellboreData.Color.X, wellboreData.Color.Y, wellboreData.Color.Z]);
 
-                if (wellboreData.DD_GeophoneGroup_EE !== null && wellboreData.DD_GeophoneGroup_EE.DD_GeophoneCollection_EE !== undefined) {
-                    let geophoneGroup = new RenderableGroup(wellboreData.DD_GeophoneGroup_EE.DD_Name_EE, wellboreData.DD_GeophoneGroup_EE.DD_ID_EE, this.sceneInfo);
+                if (wellboreData.GeophoneGroup !== null && wellboreData.GeophoneGroup.GeophoneCollection !== undefined) {
+                    let geophoneGroup = new RenderableGroup(wellboreData.GeophoneGroup.Name, wellboreData.GeophoneGroup.ID, this.sceneInfo);
                     wellbore.addChild(geophoneGroup);
 
                     let geophoneNode = new TreeViewItem();
-                    geophoneNode.id = wellboreData.DD_GeophoneGroup_EE.DD_ID_EE;
-                    geophoneNode.name = wellboreData.DD_GeophoneGroup_EE.DD_Name_EE;
+                    geophoneNode.id = wellboreData.GeophoneGroup.ID;
+                    geophoneNode.name = wellboreData.GeophoneGroup.Name;
                     geophoneNode.treeType = 6;    
                     geophoneNode.depth = 3;        
                     geophoneNode.hasChildren = false;
                     this.treeViewItems.push(geophoneNode);
 
-                    let geophoneCollection = wellboreData.DD_GeophoneGroup_EE.DD_GeophoneCollection_EE;
+                    let geophoneCollection = wellboreData.GeophoneGroup.GeophoneCollection;
                     for (var k = 0; k < geophoneCollection.length; k++) {
                         var geophoneObject = geophoneCollection[k];
 
                         var geophoneRenderable = new Geophone(this.sceneInfo);
-                        geophoneRenderable.init(wellbore, geophoneObject.DD_Name_EE);                       
+                        geophoneRenderable.init(wellbore, geophoneObject.Name);                       
 
                         var geophoneData = [];
-                        for (var m = 0; m < geophoneObject.DD_Distances_EE.length; m++) {
-                            geophoneData.push(geophoneObject.DD_Distances_EE[m]);
+                        for (var m = 0; m < geophoneObject.Distances.length; m++) {
+                            geophoneData.push(geophoneObject.Distances[m]);
                         }
 
                         geophoneRenderable.setData(geophoneData);
@@ -156,46 +156,46 @@ export function Scene() {
                     }
                 }
 
-                if (wellboreData.DD_PerfGroup_EE !== null && wellboreData.DD_PerfGroup_EE.DD_PerfCollection_EE !== undefined ) {
-                    let perfGroup = new RenderableGroup(wellboreData.DD_PerfGroup_EE.DD_Name_EE, wellboreData.DD_PerfGroup_EE.DD_ID_EE, this.sceneInfo);
+                if (wellboreData.PerfGroup !== null && wellboreData.PerfGroup.PerfCollection !== undefined ) {
+                    let perfGroup = new RenderableGroup(wellboreData.PerfGroup.Name, wellboreData.PerfGroup.ID, this.sceneInfo);
                     wellbore.addChild(perfGroup);
 
                     let perfNode = new TreeViewItem();
-                    perfNode.id = wellboreData.DD_PerfGroup_EE.DD_ID_EE;
-                    perfNode.name = wellboreData.DD_PerfGroup_EE.DD_Name_EE;
+                    perfNode.id = wellboreData.PerfGroup.ID;
+                    perfNode.name = wellboreData.PerfGroup.Name;
                     perfNode.treeType = 7;    
                     perfNode.depth = 3;        
                     perfNode.hasChildren = false;
                     this.treeViewItems.push(perfNode);  
 
-                    for (var ii = 0; ii < wellboreData.DD_PerfGroup_EE.DD_PerfCollection_EE.length; ii++) {
-                        var perfObject = wellboreData.DD_PerfGroup_EE.DD_PerfCollection_EE[ii];
+                    for (var ii = 0; ii < wellboreData.PerfGroup.PerfCollection.length; ii++) {
+                        var perfObject = wellboreData.PerfGroup.PerfCollection[ii];
 
                         var perfRenderable = new Perf(this.sceneInfo);
-                        perfRenderable.init(wellbore, perfObject.DD_Name_EE, perfObject.DD_Color_EE);
+                        perfRenderable.init(wellbore, perfObject.Name, perfObject.Color);
 
                         var perfData = [];
-                        for (var jj = 0; jj < perfObject.DD_Distances_EE.length; jj++) {
-                            perfData.push(perfObject.DD_Distances_EE[jj]);
+                        for (var jj = 0; jj < perfObject.Distances.length; jj++) {
+                            perfData.push(perfObject.Distances[jj]);
                         }
                         perfRenderable.setData(perfData);
                         perfGroup.addChild(perfRenderable);
                     }
                 }            
 
-                if (wellboreData.DD_LasLog_EE != null) {
+                if (wellboreData.LasLog != null) {
                     var lasRenderable = new LasLog(this.sceneInfo);
-                    lasRenderable.init(wellbore, wellboreData.DD_LasLog_EE);
+                    lasRenderable.init(wellbore, wellboreData.LasLog);
                     
                     let lasName = lasRenderable.changeChannel('GR');
 
                     let lasNode = new TreeViewItem();
-                    lasNode.id = wellboreData.DD_LasLog_EE.DD_ID_EE;
+                    lasNode.id = wellboreData.LasLog.ID;
                     lasNode.name = lasName;
                     lasNode.treeType = 8;    
                     lasNode.depth = 3;        
                     lasNode.hasChildren = false;
-                    lasNode.data = wellboreData.DD_LasLog_EE.DD_NameList_EE;
+                    lasNode.data = wellboreData.LasLog.NameList;
                     lasNode.renderable = lasRenderable;
                     this.treeViewItems.push(lasNode);  
 
@@ -206,101 +206,49 @@ export function Scene() {
             }
         }
 
-        if (sceneData.DD_FormationGroup_EE !== null && sceneData.DD_FormationGroup_EE.DD_FormationCollection_EE !== null) {
-            let formationGroup = new RenderableGroup(sceneData.DD_FormationGroup_EE.DD_Name_EE, sceneData.DD_FormationGroup_EE.DD_ID_EE, this.sceneInfo);
-            this.projectGroup.addChild(formationGroup);
-
-            let formationGroupNode = new TreeViewItem();
-            formationGroupNode.id = sceneData.DD_FormationGroup_EE.DD_ID_EE;
-            formationGroupNode.name = sceneData.DD_FormationGroup_EE.DD_Name_EE;
-            formationGroupNode.treeType = 11;    
-            formationGroupNode.depth = 1;        
-            formationGroupNode.hasChildren = true;
-            this.treeViewItems.push(formationGroupNode);
-
-            for (var i2 = 0; i2 < sceneData.DD_FormationGroup_EE.DD_FormationCollection_EE.length; i2++) {
-                let formationObject = sceneData.DD_FormationGroup_EE.DD_FormationCollection_EE[i2];
-
-                let formationVertexList = []
-                for (var k1 = 0; k1 < formationObject.DD_VertexList_EE.length; k1++) {
-                    let pItem = formationObject.DD_VertexList_EE[k1];
-                    formationVertexList.push(pItem.X);
-                    formationVertexList.push(pItem.Y);
-                    formationVertexList.push(pItem.Z);
-                }
-
-                let formationIndexList = []
-                for (var k2 = 0; k2 < formationObject.DD_TriangleList_EE.length; k2++) {
-                    var iItem = formationObject.DD_TriangleList_EE[k2];
-                    formationIndexList.push(iItem.X);
-                    formationIndexList.push(iItem.Y);
-                    formationIndexList.push(iItem.Z);
-                }
-
-                var formationRenderable = new Formation(this.sceneInfo);
-
-                formationRenderable.init(formationObject.DD_Name_EE, formationObject.DD_ID_EE, formationVertexList, formationIndexList);
-
-                let formationMinColor = [formationObject.DD_MinColor_EE.X, formationObject.DD_MinColor_EE.Y, formationObject.DD_MinColor_EE.Z];
-                let formationMaxColor = [formationObject.DD_MaxColor_EE.X, formationObject.DD_MaxColor_EE.Y, formationObject.DD_MaxColor_EE.Z];
-
-                formationRenderable.setColor(formationObject.DD_MinY_EE, formationObject.DD_MaxY_EE, formationMinColor, formationMaxColor);
-
-                formationGroup.addChild(formationRenderable);
-
-                let formation = new TreeViewItem();
-                formation.id = formationObject.DD_ID_EE;
-                formation.name = formationObject.DD_Name_EE;
-                formation.treeType = 12;    
-                formation.depth = 2;        
-                formation.hasChildren = false;
-                this.treeViewItems.push(formation);
-            }
-        }
-
-        if (sceneData.DD_EventGroup_EE !== null && sceneData.DD_EventGroup_EE.DD_EventWellCollection_EE !== null) {
-            let eventGroup = new RenderableGroup(sceneData.DD_EventGroup_EE.DD_Name_EE, sceneData.DD_EventGroup_EE.DD_ID_EE, this.sceneInfo);            
+        if (sceneData.EventGroup !== null && sceneData.EventGroup.EventWellCollection !== null) {
+            let eventGroup = new RenderableGroup(sceneData.EventGroup.Name, sceneData.EventGroup.ID, this.sceneInfo);            
             this.projectGroup.addChild(eventGroup);
 
             let eventGroupNode = new TreeViewItem();
-            eventGroupNode.id = sceneData.DD_EventGroup_EE.DD_ID_EE;
-            eventGroupNode.name = sceneData.DD_EventGroup_EE.DD_Name_EE;
+            eventGroupNode.id = sceneData.EventGroup.ID;
+            eventGroupNode.name = sceneData.EventGroup.Name;
             eventGroupNode.treeType = 3;    
             eventGroupNode.depth = 1;        
             eventGroupNode.hasChildren = true;
             this.treeViewItems.push(eventGroupNode);               
 
-            for (var i3 = 0; i3 < sceneData.DD_EventGroup_EE.DD_EventWellCollection_EE.length; i3++) {
-                let eventWellObject = sceneData.DD_EventGroup_EE.DD_EventWellCollection_EE[i3];
+            for (var i3 = 0; i3 < sceneData.EventGroup.EventWellCollection.length; i3++) {
+                let eventWellObject = sceneData.EventGroup.EventWellCollection[i3];
 
-                var renderableWellEventGroup = new RenderableGroup(eventWellObject.DD_Name_EE, eventWellObject.DD_ID_EE, this.sceneInfo);
+                var renderableWellEventGroup = new RenderableGroup(eventWellObject.Name, eventWellObject.ID, this.sceneInfo);
                 eventGroup.addChild(renderableWellEventGroup);
 
                 let eventWellNode = new TreeViewItem();
-                eventWellNode.id = eventWellObject.DD_ID_EE;
-                eventWellNode.name = eventWellObject.DD_Name_EE;
+                eventWellNode.id = eventWellObject.ID;
+                eventWellNode.name = eventWellObject.Name;
                 eventWellNode.treeType = 4;    
                 eventWellNode.depth = 2;        
                 eventWellNode.hasChildren = true;
                 this.treeViewItems.push(eventWellNode);                 
 
-                for (var k3 = 0; k3 < eventWellObject.DD_StageCollection_EE.length; k3++) {
-                    var stageObject = eventWellObject.DD_StageCollection_EE[k3];
+                for (var k3 = 0; k3 < eventWellObject.StageCollection.length; k3++) {
+                    var stageObject = eventWellObject.StageCollection[k3];
 
                     let eventList = []
-                    for (var kk3 = 0; kk3 < stageObject.DD_EventCollection_EE.length; kk3++) {
-                        var eItem = stageObject.DD_EventCollection_EE[kk3];
+                    for (var kk3 = 0; kk3 < stageObject.EventCollection.length; kk3++) {
+                        var eItem = stageObject.EventCollection[kk3];
                         eventList.push(new EventItem([eItem.X, eItem.Y, eItem.Z], eItem.M, eItem.C, eItem.T));
                     }
 
                     var stageEvents = new SE_StageEvents(this.sceneInfo);
-                    stageEvents.init(stageObject.DD_Name_EE, stageObject.DD_ID_EE, [stageObject.DD_Color_EE.X, stageObject.DD_Color_EE.Y, stageObject.DD_Color_EE.Z]);
+                    stageEvents.init(stageObject.Name, stageObject.ID, [stageObject.Color.X, stageObject.Color.Y, stageObject.Color.Z]);
                     stageEvents.setupEventBuffer(eventList);
                     renderableWellEventGroup.addChild(stageEvents);
 
                     let eventStageNode = new TreeViewItem();
-                    eventStageNode.id = stageObject.DD_ID_EE;
-                    eventStageNode.name = stageObject.DD_Name_EE;
+                    eventStageNode.id = stageObject.ID;
+                    eventStageNode.name = stageObject.Name;
                     eventStageNode.treeType = 5;    
                     eventStageNode.depth = 3;        
                     eventStageNode.hasChildren = false;

@@ -107,33 +107,33 @@ export function LasLog(sceneInfo) {
 
     this.changeChannel = function(name) {
         if (this.lasData === null || this.lasData === undefined ||
-            this.lasData.DD_CurveDataList_EE === null || this.lasData.DD_CurveDataList_EE === undefined) return null;
+            this.lasData.CurveDataList === null || this.lasData.CurveDataList === undefined) return null;
 
         let curveData = null;  
         let curveName = ''; 
-        for(var i = 0; i < this.lasData.DD_CurveDataList_EE.length; i++) {
-            if (this.lasData.DD_CurveDataList_EE[i].DD_Name_EE === name) {
-                curveData = this.lasData.DD_CurveDataList_EE[i];
-                curveName = this.lasData.DD_CurveDataList_EE[i].DD_Name_EE;        
+        for(var i = 0; i < this.lasData.CurveDataList.length; i++) {
+            if (this.lasData.CurveDataList[i].Name === name) {
+                curveData = this.lasData.CurveDataList[i];
+                curveName = this.lasData.CurveDataList[i].Name;        
                 break;
             }            
         }
         if (curveData === null) {
-            curveData = this.lasData.DD_CurveDataList_EE[0];  
-            curveName = this.lasData.DD_CurveDataList_EE[0].DD_Name_EE;        
+            curveData = this.lasData.CurveDataList[0];  
+            curveName = this.lasData.CurveDataList[0].Name;        
         }
 
         var lasDataCollection = [];
 
-        for (var kk = 0; kk < this.lasData.DD_DepthList_EE.length; kk++) {
-            lasDataCollection.push(new LasData(this.lasData.DD_DepthList_EE[kk], curveData.DD_DataList_EE[kk]));
+        for (var kk = 0; kk < this.lasData.DepthList.length; kk++) {
+            lasDataCollection.push(new LasData(this.lasData.DepthList[kk], curveData.DataList[kk]));
         }
 
         this.addData(lasDataCollection);
-        this.updateBuffer(0, curveData.DD_MaxValue_EE);
+        this.updateBuffer(0, curveData.MaxValue);
 
         this.name = curveName;
-        this.unit = curveData.DD_Unit_EE;
+        this.unit = curveData.Unit;
         return curveName;
     }
 
