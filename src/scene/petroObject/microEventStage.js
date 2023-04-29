@@ -3,7 +3,7 @@ import * as vec3 from '../glMatrix/vec3';
 
 import { ShaderType, HighlightColor, getUniqueID, ConvertIDToColor, textureType, getTimeString } from '../sceneConsts';
 
-export function SE_StageEvents(inSceneInfo) {
+export function StageEvents(inSceneInfo) {
     this.sceneInfo = inSceneInfo;
     this.gl = inSceneInfo.gl;
     this.pickedIndex = -1;

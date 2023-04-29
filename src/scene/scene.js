@@ -11,11 +11,8 @@ import { RenderableGroup } from './petroObject/renderableGroup';
 import { Geophone } from './petroObject/geoPhone';
 import { Perf } from './petroObject/perf';
 import { LasLog } from './petroObject/laslog';
-import { Formation } from './petroObject/formation';
-import { Plane } from './petroObject/plane';
-import { SE_StageEvents, EventItem } from './petroObject/microEventStage';
+import { StageEvents, EventItem } from './petroObject/microEventStage';
 import { ConvertRGBToID, PickingResult, ConvertColorToFloat } from './sceneConsts';
-import { SceneData } from '../AppData';
 
 import TreeViewItem from './treeView/treeViewItem';
 
@@ -27,10 +24,6 @@ export function Scene() {
     this.treeViewItems = [];
 
     this.init = function(gl, sceneData) {
-        console.log(sceneData);
-        console.log('====================')
-        console.log(SceneData);
-
         this.gl = gl;
         let shaderProgram = initShaderProgram(this.gl);
 
@@ -241,7 +234,7 @@ export function Scene() {
                         eventList.push(new EventItem([eItem.X, eItem.Y, eItem.Z], eItem.M, eItem.C, eItem.T));
                     }
 
-                    var stageEvents = new SE_StageEvents(this.sceneInfo);
+                    var stageEvents = new StageEvents(this.sceneInfo);
                     stageEvents.init(stageObject.Name, stageObject.ID, [stageObject.Color.X, stageObject.Color.Y, stageObject.Color.Z]);
                     stageEvents.setupEventBuffer(eventList);
                     renderableWellEventGroup.addChild(stageEvents);
