@@ -10,9 +10,12 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 class SceneComponent extends React.Component {
   static contextType = PetroContext;
-
+  
   constructor(props) {
     super(props);
+
+    this.containerRef = React.createRef();
+    this.canvasRef = React.createRef();  
 
     this.initialized = false;
     this.pickedResult = null;
@@ -33,10 +36,10 @@ class SceneComponent extends React.Component {
   }
 
   updateCanvas() {
-    const { dispatchAction, sceneSize } = this.context;
+    const { dispatchAction } = this.context;
 
     if (!this.initialized && this.sceneData) {
-      this.gl = this.refs.sceneCanvas.getContext("webgl");
+      this.gl = this.canvasRef.current.getContext("webgl");
       if (!this.gl) {
         alert(
           "Unable to initialize WebGL. Your browser or machine may not support it."
@@ -59,11 +62,10 @@ class SceneComponent extends React.Component {
       this.initialized = true;      
     }
 
-    if (this.initialized && sceneSize !== null && sceneSize !== undefined) {
-        let width = sceneSize[0];
-        let height = sceneSize[1];
-
-        var canvas = document.getElementById('sceneCanvas');
+    if (this.initialized) {
+        let width = this.containerRef.current.clientWidth;
+        let height = this.containerRef.current.clientHeight;
+        var canvas = this.canvasRef.current;
         canvas.width = width;
         canvas.height = height-4;
 
@@ -155,26 +157,11 @@ class SceneComponent extends React.Component {
         this.scene.draw(width, height-4, this.state.unit === 'meter');      
     }
   }  
-
-  // decipherText(data) {
-  //   var output = "";    
-  //   var buffer = new Buffer(data);
-  //   for (var i = 0; i < buffer.length; i++) {
-  //     var code = buffer[i];
-  //     if (code > 32 && code < 127) {
-  //       output += String.fromCharCode(159 - code);
-  //     }
-  //     else {
-  //       output += String.fromCharCode(code);
-  //     }
-  //   }
-
-  //   return JSON.parse(output);
-  // }
   
   componentDidUpdate(prevProps) {
     if (this.props.sceneData === prevProps.sceneData ) return;
 
+    this.initialized = false;
     this.sceneData = this.props.sceneData;
     this.updateCanvas();
 
@@ -206,7 +193,7 @@ class SceneComponent extends React.Component {
   }
 
   handleMouseMove(evt) {
-    let sceneRect = document.getElementById('sceneContainer').getBoundingClientRect();
+    let sceneRect = this.containerRef.current.getBoundingClientRect();
     let clientX = evt.clientX - sceneRect.left;
     let clientY = evt.clientY - sceneRect.top;
     
@@ -217,7 +204,7 @@ class SceneComponent extends React.Component {
   }
 
   handleMouseDown(evt) {
-    let sceneRect = document.getElementById('sceneContainer').getBoundingClientRect();
+    let sceneRect = this.containerRef.current.getBoundingClientRect();
     let clientX = evt.clientX - sceneRect.left;
     let clientY = evt.clientY - sceneRect.top;
 
@@ -263,7 +250,7 @@ class SceneComponent extends React.Component {
   }
 
   handleMouseUp(evt) {
-    let sceneRect = document.getElementById('sceneContainer').getBoundingClientRect();
+    let sceneRect = this.containerRef.current.getBoundingClientRect();
     let clientX = evt.clientX - sceneRect.left;
     let clientY = evt.clientY - sceneRect.top;
 
@@ -279,8 +266,8 @@ class SceneComponent extends React.Component {
     const {isLoading, loadingError, objectInfo } = this.context;     
 
     return (
-      <div id="sceneContainer" style={{background:'#DDDDDD', height:'100%', position:'relative'}} >
-        <canvas id="sceneCanvas" ref="sceneCanvas"
+      <div ref={this.containerRef} style={{background:'#DDDDDD', height:'100%', position:'relative'}} >
+        <canvas ref={this.canvasRef}
           onDoubleClick={this.handleDoubleClick}
           onWheel={this.handleMouseWheel}
           onMouseMove={this.handleMouseMove}
