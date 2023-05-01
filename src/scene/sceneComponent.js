@@ -14,6 +14,7 @@ class SceneComponent extends React.Component {
   constructor(props) {
     super(props);
 
+    this.timerReady = false;
     this.containerRef = React.createRef();
     this.canvasRef = React.createRef();  
 
@@ -165,9 +166,12 @@ class SceneComponent extends React.Component {
     this.sceneData = this.props.sceneData;
     this.updateCanvas();
 
-    this.timer = setInterval(() => {
-      this.updateCanvas();
-    }, 50);      
+    if (!this.timerReady) {
+      this.timerReady = true;
+      this.timer = setInterval(() => {
+        this.updateCanvas();
+      }, 50);      
+    }
   }
 
   handleDoubleClick(evt) {

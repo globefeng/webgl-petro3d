@@ -1,5 +1,8 @@
 import React, { useContext, useState, useEffect }  from 'react';
 import { PetroContext } from '../../context/petroContext';
+import { SceneData } from '../../AppData';
+import { SceneData2 } from '../../AppData2';
+
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
@@ -168,9 +171,21 @@ const TreeView = (props) => {
         }
     }, [treeItems])
 
+    const LoadProject = () => {
+        dispatchAction({ type: "SET_SCENE_DATA", data: SceneData })
+    }
+    
+    const LoadProject2 = () => {
+        dispatchAction({ type: "SET_SCENE_DATA", data: SceneData2 })
+    }
+
     return (
         ( activeTreeItems !== undefined && activeTreeItems !== null) ? 
         <div>
+            <div>
+            <button onClick={LoadProject} style={{marginRight: '30px'}}>Load Project</button>
+            <button onClick={LoadProject2}>Load Project 2</button>
+            </div>
         {activeTreeItems.map((item, index) => getItemContent(item, index))}
 
         {/* <Menu
