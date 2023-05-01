@@ -63,11 +63,6 @@ export function Camera3D(sceneInfo) {
     }
 
     this.setProjection = function () {
-        var lightMatrix = mat4.create();
-        mat4.identity(lightMatrix);
-        mat4.rotate(lightMatrix, lightMatrix, Math.PI / 4, this.lookRight);
-        mat4.rotate(lightMatrix, lightMatrix, -Math.PI * 10 / 180, [0, 1, 0]);
-
         var azimuth = this.getAzimuth() + Math.PI * 3 / 4;
         var lightDirection = [Math.cos(azimuth), 1, Math.sin(azimuth)];
         vec3.normalize(lightDirection, lightDirection);

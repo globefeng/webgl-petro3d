@@ -199,7 +199,7 @@ export function Scene() {
             }
         }
 
-        if (sceneData.EventGroup !== null && sceneData.EventGroup.EventWellCollection !== null) {
+        if (sceneData.EventGroup && sceneData.EventGroup.EventWellCollection) {
             let eventGroup = new RenderableGroup(sceneData.EventGroup.Name, sceneData.EventGroup.ID, this.sceneInfo);            
             this.projectGroup.addChild(eventGroup);
 
